@@ -7,8 +7,9 @@ const createUserHandler = async (req, res) => {
     try {
         const findUser = await findUserByEmail(email);
         if (findUser) return res.status(404).json({ message: 'Email already in use' })
-        const passwordInput = bcryptjs.hash(password, 8);
-        const newUser = await createUser({ email, passwordInput });
+
+        const passwordInput = await bcryptjs.hash(password, 8);
+        const newUser = await createUser({ email, password: passwordInput });
         return res.status(201).json(newUser);
     } catch (error) {
         return res.status(500).json({ message: 'error' });
