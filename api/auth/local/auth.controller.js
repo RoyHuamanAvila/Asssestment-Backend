@@ -42,6 +42,7 @@ const isAuthenticated = async (req, res, next) => {
     try {
         if (typeof bearerHeader !== 'undefined') {
             const token = bearerHeader.split(' ')[1];
+
             const data = jwt.verify(token, 'Make_It_Real');
 
             if (!data) {
@@ -56,7 +57,6 @@ const isAuthenticated = async (req, res, next) => {
             }
 
             req.user = user;
-            res.json({ message: "Authorized" });
 
             next();
         } else {
