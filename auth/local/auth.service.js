@@ -1,4 +1,4 @@
-const User = require('../../user/user.model');
+const User = require('../../api/user/user.model.js');
 
 const createUser = (user) => User.create(user);
 const findUserByEmail = (email) => User.findOne({ email });

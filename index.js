@@ -1,18 +1,12 @@
-const express = require('express');
-const cors = require('cors');
 const mongoose = require('mongoose');
-
+const app = require('./app');
 require('dotenv').config();
 
-const routes = require('./routes');
-const app = express();
 const PORT = process.env.PORT;
-app.use(cors());
-app.use(express.json());
+
 
 app.listen(PORT, async () => {
     connectToMongo();
-    routes(app);
     console.log(`Listen on port ${PORT}`)
 })
 
@@ -25,3 +19,4 @@ const connectToMongo = async () => {
         process.exit(1)
     }
 }
+

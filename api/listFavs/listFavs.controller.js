@@ -7,7 +7,7 @@ const {
 
 const {
     updateUser
-} = require('../auth/local/auth.service')
+} = require('../../auth/local/auth.service')
 
 const findSingleListHandler = async (req, res) => {
     const user = req.user;
